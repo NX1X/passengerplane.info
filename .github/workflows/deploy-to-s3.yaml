@@ -1,0 +1,42 @@
+name: Deploy to S3
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.html'   
+      - 'images/**'     
+env:
+  BUCKET_NAME: "${{ secrets.BUCKET_NAME }}"
+  AWS_REGION: "${{ secrets.AWS_REGION }}"
+  GITHUB_REF: "main"
+  CLOUDFRONT_DISTRIBUTION_ID: "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"  
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        role-session-name: ${{ secrets.AWS_ROLE_SESSION_NAME }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Sync repository to S3
+      run: |
+        aws s3 sync . s3://${{ secrets.BUCKET_NAME }} --exclude "node_modules/**" --exclude ".git/**" --exclude "dist/**" --exclude ".github/**" --exclude "README.md" --exclude "tf/**"
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+    - name: Invalidate CloudFront cache
+      run: |
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      env:
+        AWS_REGION: ${{ secrets.AWS_REGION }}

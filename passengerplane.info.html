@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Plane Info Website</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .hero {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero h1 {
+            color: #fff;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .section-content {
+            display: flex;
+            align-items: center;
+        }
+        .section-text {
+            flex: 1;
+            padding: 20px;
+        }
+        .section-image {
+            flex: 1;
+            max-width: 50%;
+        }
+        h2 {
+            color: #0077be;
+            border-bottom: 2px solid #0077be;
+            padding-bottom: 10px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .nav {
+            background-color: #0077be;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav li {
+            margin: 5px 15px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .nav a:hover {
+            color: #f0f8ff;
+        }
+        @media (max-width: 768px) {
+            .section-content {
+                flex-direction: column;
+            }
+            .section-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Welcome to the Passenger Plane Info Website<br>Understanding the Anatomy of Passenger Planes</h1>
+    </div>
+    
+    <nav class="nav">
+        <ul>
+            <li><a href="#fuselage">Fuselage</a></li>
+            <li><a href="#wings">Wings</a></li>
+            <li><a href="#engines">Engines</a></li>
+            <li><a href="#tail">Tail Assembly</a></li>
+            <li><a href="#landing-gear">Landing Gear</a></li>
+            <li><a href="#control-surfaces">Control Surfaces</a></li>
+            <li><a href="#avionics">Avionics</a></li>
+            <li><a href="#windows-doors">Windows & Doors</a></li>
+            <li><a href="#fuel-system">Fuel System</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="fuselage">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Fuselage</h2>
+                    <p>The fuselage is the main body of the airplane and one of its primary structures. It houses the cockpit, where the pilots control the aircraft; the cabin, where passengers sit; and cargo storage areas. The design considerations for the fuselage include its aerodynamic properties and structural integrity, which must support the weight of passengers, crew, and cargo, as well as withstand various stressors during flight.</p>
+                </div>
+                <div class="section-image">
+                    <img src="images/fuselage.jpg" alt="Fuselage of a passenger plane">
+                </div>
+            </div>
+        </section>
+
+        <section id="wings">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="images/wings.jpg" alt="Wings of a passenger plane (Airbus A350 WXB)">
+                </div>
+                <div class="section-text">
+                    <h2>Wings</h2>
+                    <p>Wings are critical for generating lift, enabling the aircraft to fly. They are attached to either side of the fuselage and vary in design depending on the specific performance characteristics desired, such as speed, range, and fuel efficiency. Modern aircraft wings may also incorporate advanced wingtip devices like winglets or sharklets, which improve aerodynamics by reducing drag, thereby enhancing fuel efficiency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="engines">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Engines</h2>
+                    <p>Engines are what give the airplane the power to fly. They are typically mounted on the wings or the rear of the fuselage. Commercial jet aircraft use turbofan engines that draw in air, compress it, mix it with fuel, and ignite the mixture to generate thrust. The efficiency, reliability, and power output of the engines are crucial for the aircraft's performance, particularly in terms of speed and fuel economy.</p>
+                </div>
+                <div class="section-image">
+                    <img src="images/engines.jpg" alt="Engines of a passenger plane">
+                </div>
+            </div>
+        </section>
+
+        <section id="tail">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="images/tail.jpg" alt="Tail of a passenger plane">
+                </div>
+                <div class="section-text">
+                    <h2>Tail Assembly</h2>
+                    <p>The tail section of an airplane consists of the vertical stabilizer (or fin) and the horizontal stabilizers. These surfaces help to stabilize the aircraft and control its attitude in pitch and yaw. The rudder, attached to the vertical stabilizer, and the elevators, attached to the horizontal stabilizers, are movable surfaces that help the pilot direct the aircraft.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="landing-gear">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Landing Gear</h2>
+                    <p>The landing gear supports the aircraft when it is not in the air. It includes wheels, brakes, and struts that absorb shocks during landing and taxiing. The main landing gear is located near the center of gravity of the aircraft, and a smaller nose gear is situated at the front. In most large aircraft, the landing gear can be retracted into the body during flight to reduce drag.</p>
+                </div>
+                <div class="section-image">
+                    <img src="images/landing_gear.jpg" alt="Landing gear of a passenger plane">
+                </div>
+            </div>
+        </section>
+
+        <section id="control-surfaces">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="images/control_surfaces.jpg" alt="Flight control surfaces of a passenger plane">
+                </div>
+                <div class="section-text">
+                    <h2>Flight Control Surfaces</h2>
+                    <p>Besides the rudder and elevators, other primary flight control surfaces include ailerons and spoilers. Ailerons, located at the trailing edges of the wings, control roll about the longitudinal axis. Spoilers, also located on the wings, can reduce lift and increase drag, aiding in descent and roll control.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="avionics">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Avionics</h2>
+                    <p>Avionics encompass the electronic systems used to communicate, navigate, and display information. These systems include navigation aids such as GPS, communication radios, and various other flight management tools. Avionics also ensure safety through systems like weather radars, collision avoidance systems, and black boxes (flight recorders).</p>
+                </div>
+                <div class="section-image">
+                    <img src="images/avionics.jpg" alt="Avionics of a passenger plane">
+                </div>
+            </div>
+        </section>
+
+        <section id="windows-doors">
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="images/windows_and_doors.jpg" alt="Windows and Doors of a passenger plane">
+                </div>
+                <div class="section-text">
+                    <h2>Windows and Doors</h2>
+                    <p>Windows in passenger aircraft are made from high-strength plastic materials designed to withstand significant differences in pressure between the cabin and the outside atmosphere. Doors are engineered for safety and security, with special locking mechanisms that can handle the pressures of high-altitude environments.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fuel-system">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Fuel System</h2>
+                    <p>The fuel system in a passenger plane is designed to store and distribute fuel efficiently and safely. It typically includes fuel tanks in the wings and sometimes in the fuselage, along with pumps, valves, and pipelines to transport fuel to the engines. Modern fuel systems are equipped with sophisticated monitoring and management systems to ensure optimal fuel usage and safety throughout the flight.</p>
+                </div>
+                <div class="section-image">
+                    <img src="images/fuel_system.jpg" alt="Fuel System of a passenger plane">
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
