@@ -1,4 +1,4 @@
-name: Deploy to S3
+name: Upload to S3 and Invalidate CloudFront Cache
 
 on:
   workflow_dispatch:
@@ -6,17 +6,13 @@ on:
     branches:
       - main
     paths:
-      - '**/*.html'   
-      - 'images/**'     
+      - '**/*.html'
+      - 'images/**'
 
 env:
-  BUCKET_NAME: "${{ secrets.BUCKET_NAME }}"
-  AWS_REGION: "${{ secrets.AWS_REGION }}"
-  GITHUB_REF: "main"
-  CLOUDFRONT_DISTRIBUTION_ID: "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"  
-  AWS_ROLE_TO_ASSUME: "${{ secrets.AWS_ROLE_TO_ASSUME }}"
-  AWS_ROLE_SESSION_NAME: "${{ secrets.AWS_ROLE_SESSION_NAME }}"
-  
+  BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,17 +24,16 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: ${{ env.AWS_ROLE_TO_ASSUME }}
-        role-session-name: ${{ env.AWS_ROLE_SESSION_NAME }}
-        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        role-session-name: ${{ secrets.AWS_ROLE_SESSION_NAME }}
+        aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Sync repository to S3
       run: |
-        aws s3 sync . s3://${{ env.BUCKET_NAME }} --delete --exclude ".git/**" --exclude ".github/**" --exclude "README.md" --exclude "tf/**"
-      
+        aws s3 sync . s3://${{ env.BUCKET_NAME }} --exclude "node_modules/**" --exclude ".git/**" --exclude "dist/**" --exclude ".gitignore**" --exclude ".github/**" --exclude "README.md" --exclude "tf/**" --exclude "LICENSE**"
+
     - name: Invalidate CloudFront cache
-      if: success()
       run: |
         aws cloudfront create-invalidation --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
